@@ -90,6 +90,7 @@
     <Compile Include="Character.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="DAL.cs" />
+    <Compile Include="DALFactory.cs" />
     <Compile Include="Enum.cs" />
     <Compile Include="IDAL.cs" />
     <Compile Include="Proficiency.cs" />

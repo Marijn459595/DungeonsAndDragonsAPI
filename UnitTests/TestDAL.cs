@@ -11,57 +11,135 @@ namespace UnitTests
     {
         public List<String> GetRaces()
         {
-            return new List<String>() { "Dwarf" };
-        }
-
-        public int GetRaceID(string RaceName)
-        {
-            return 0;
+            return new List<String>() { "Dwarf", "Elf", "Dragonborn" };
         }
 
         public List<String> GetSubraces(string RaceName)
         {
-            return new List<String>() { "Hill Dwarf" };
-        }
-
-        public int GetSubraceID(string SubraceName)
-        {
-            return 0;
+            switch(RaceName)
+            {
+                case "Dwarf":
+                    return new List<String>() { "Hill Dwarf", "Mountain Dwarf" };
+                case "Elf":
+                    return new List<String>() { "High Elf", "Wood Elf", "Dark Elf (Drow)" };
+                case "Dragonborn":
+                    return new List<String>();
+                default:
+                    return null;
+            }
         }
 
         public List<String> GetClasses()
         {
-            return new List<String>() { "Barbarian" };
-        }
-
-        public int GetClassID(string ClassName)
-        {
-            return 0;
+            return new List<String>() { "Barbarian", "Rogue" };
         }
 
         public List<String> GetSubclasses(string ClassName)
         {
-            return new List<String>() { "Path of the Berserker" };
-        }
-
-        public int GetSubclassID(string SubclassName)
-        {
-            return 0;
+            switch(ClassName)
+            {
+                case "Barbarian":
+                    return new List<String>() { "Path of the Berserker", "Path of the Zealot" };
+                case "Rogue":
+                    return new List<String>() { "Thief", "Assassin" };
+                default:
+                    return null;
+            }
         }
 
         public List<Ability> GetAbilities(string RaceName, string ClassName, string SubraceName, string SubclassName)
         {
-            return new List<Ability>() { new Ability(0, 0), new Ability(0, 1) };
+            List<Ability> returnlist = new List<Ability>();
+
+            switch(RaceName)
+            {
+                case "Dwarf":
+                    returnlist.Add(DALFactory.GetAbility(0, 1));
+                    returnlist.Add(DALFactory.GetAbility(0, 2));
+                    returnlist.Add(DALFactory.GetAbility(0, 3));
+                    break;
+                case "Elf":
+                    returnlist.Add(DALFactory.GetAbility(0, 4));
+                    returnlist.Add(DALFactory.GetAbility(0, 5));
+                    break;
+                case "Dragonborn":
+                    break;
+            }
+            switch(ClassName)
+            {
+                case "Barbarian":
+                    returnlist.Add(DALFactory.GetAbility(1, 8));
+                    returnlist.Add(DALFactory.GetAbility(2, 9));
+                    returnlist.Add(DALFactory.GetAbility(2, 10));
+                    break;
+                case "Rogue":
+                    returnlist.Add(DALFactory.GetAbility(1, 16));
+                    returnlist.Add(DALFactory.GetAbility(2, 17));
+                    break;
+            }
+            switch(SubraceName)
+            {
+                case "Hill Dwarf":
+                    break;
+                case "Mountain Dwarf":
+                    break;
+                case "High Elf":
+                    returnlist.Add(DALFactory.GetAbility(0, 1));
+                    break;
+                case "Wood Elf":
+                    returnlist.Add(DALFactory.GetAbility(0, 1));
+                    returnlist.Add(DALFactory.GetAbility(0, 6));
+                    break;
+                case "Dark Elf (Drow)":
+                    returnlist.Add(DALFactory.GetAbility(0, 21));
+                    returnlist.Add(DALFactory.GetAbility(0, 7));
+                    break;
+            }
+            switch(SubclassName)
+            {
+                case "Path of the Berserker":
+                    returnlist.Add(DALFactory.GetAbility(3, 11));
+                    break;
+                case "Path of the Zealot":
+                    returnlist.Add(DALFactory.GetAbility(3, 12));
+                    returnlist.Add(DALFactory.GetAbility(3, 13));
+                    break;
+                case "Thief":
+                    returnlist.Add(DALFactory.GetAbility(3, 18));
+                    returnlist.Add(DALFactory.GetAbility(3, 19));
+                    break;
+                case "Assassin":
+                    returnlist.Add(DALFactory.GetAbility(3, 20));
+                    break;
+            }
+
+            return returnlist;
         }
 
         public List<String> GetProficiencies(string ClassName)
         {
-            return new List<String>() { "Athletics", "Acrobatics", "Animal Handling" };
+            switch(ClassName)
+            {
+                case "Barbarian":
+                    return new List<String>() { "Animal Handling", "Athletics", "Intimidation", "Nature", "Perception", "Survival" };
+                case "Rogue":
+                    return new List<String>() { "Acrobatics", "Athletics", "Deception", "Insight", "Intimidation", "Investigation", "Perception", "Performance", "Persuasion", "Sleight of Hand", "Stealth" };
+                default:
+                    return null;
+            }
         }
 
         public int GetProficiencyAmount(string ClassName)
         {
-            return 2;
+            switch(ClassName)
+            {
+                case "Barbarian":
+                    return 2;
+                case "Rogue":
+                    return 4;
+                default:
+                    return 0;
+            }
         }
     }
 }
