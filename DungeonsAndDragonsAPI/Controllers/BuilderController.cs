@@ -7,37 +7,37 @@ namespace DungeonsAndDragonsAPI.Controllers
     [ApiController]
     public class BuilderController : Controller
     {
-        DAL dal = new DAL();
+        public IDAL DAL = DALFactory.GetDAL();
         Random rng = new Random();
 
         [HttpGet("Races")]
         public List<String> Races()
         {
-            return dal.GetRaces();
+            return DAL.GetRaces();
         }
 
         [HttpGet("Subraces/{RaceName}")]
         public List<String> Subraces(string RaceName)
         {
-            return dal.GetSubraces(RaceName);
+            return DAL.GetSubraces(RaceName);
         }
 
         [HttpGet("Classes")]
         public List<String> Classes()
         {
-            return dal.GetClasses();
+            return DAL.GetClasses();
         }
 
         [HttpGet("Subclasses/{ClassName}")]
         public List<String> Subclasses(string ClassName)
         {
-            return dal.GetSubclasses(ClassName);
+            return DAL.GetSubclasses(ClassName);
         }
 
         [HttpGet("Abilities/{RaceName}/{ClassName}/{SubraceName}/{SubclassName}")]
         public List<Ability> Abilities(string RaceName, string ClassName, string SubraceName, string SubclassName)
         {
-            return dal.GetAbilities(RaceName, ClassName, SubraceName, SubclassName);
+            return DAL.GetAbilities(RaceName, ClassName, SubraceName, SubclassName);
         }
 
         [HttpGet("DiceRoll/{d}")]
@@ -82,13 +82,13 @@ namespace DungeonsAndDragonsAPI.Controllers
         [HttpGet("GetProficiencies/{ClassName}")]
         public List<String> GetProficiencies(string ClassName)
         {
-            return dal.GetProficiencies(ClassName);
+            return DAL.GetProficiencies(ClassName);
         }
 
         [HttpGet("GetProficiencyAmount/{ClassName}")]
         public int GetProficiencyAmount(string ClassName)
         {
-            return dal.GetProficiencyAmount(ClassName);
+            return DAL.GetProficiencyAmount(ClassName);
         }
     }
 }

@@ -35,7 +35,7 @@ namespace Data_Access
             return races;
         }
 
-        public int GetRaceID(string RaceName)
+        private int GetRaceID(string RaceName)
         {
             SqlConnection connection = new SqlConnection(Connection.connectionString);
 
@@ -88,7 +88,7 @@ namespace Data_Access
             return subraces;
         }
 
-        public int GetSubraceID(string SubraceName)
+        private int GetSubraceID(string SubraceName)
         {
             SqlConnection connection = new SqlConnection(Connection.connectionString);
 
@@ -138,7 +138,7 @@ namespace Data_Access
             return classes;
         }
 
-        public int GetClassID(string ClassName)
+        private int GetClassID(string ClassName)
         {
             SqlConnection connection = new SqlConnection(Connection.connectionString);
 
@@ -191,7 +191,7 @@ namespace Data_Access
             return subclasses;
         }
 
-        public int GetSubclassID(string SubclassName)
+        private int GetSubclassID(string SubclassName)
         {
             SqlConnection connection = new SqlConnection(Connection.connectionString);
 
