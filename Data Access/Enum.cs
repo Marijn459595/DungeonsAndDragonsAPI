@@ -10,16 +10,6 @@
         Charisma
     }
 
-    public enum Class
-    {
-        Barbarian
-    }
-
-    public enum Race
-    {
-        Dwarf
-    }
-
     public enum Skill
     {
         Acrobatics,
